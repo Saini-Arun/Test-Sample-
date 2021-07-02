@@ -5,22 +5,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-class Details{
+class Product{
 	String Brand;
 	String Model;
 	int Price;
 	
-	public Details(String brand, String model, int price) {
+	public Product(String brand, String model, int price) {
 		Brand=brand;
 		Model=model;
 		this.Price=price;
 	}
 }
 
-class sortByPrice implements Comparator<Details>{
+class sortByPrice implements Comparator<Product>{
 
 	@Override
-	public int compare(Details o1, Details o2) {
+	public int compare(Product o1, Product o2) {
 		// TODO Auto-generated method stub
 		return o1.Price - o2.Price;
 	}
@@ -28,7 +28,7 @@ class sortByPrice implements Comparator<Details>{
 }
 public class Solution {
 	
-	public static ArrayList<Details> organize(String str){
+	public static ArrayList<Product> organize(String str){
 		
 		int len=str.length();
 		int index=0;
@@ -36,7 +36,7 @@ public class Solution {
 		ArrayList<String> brand=new ArrayList();
 		ArrayList<String> model=new ArrayList();
 		ArrayList<Integer> price=new ArrayList();
-		ArrayList<Details> data=new ArrayList();
+		ArrayList<Product> data=new ArrayList();
 		
 		int startIndex=0;
 		while(index<len) {
@@ -64,7 +64,7 @@ public class Solution {
 		          
 		          model.add(currentModel);
 		          
-		          data.add(new Details(brand.get(brand.size()-1),model.get(brand.size()-1),price.get(brand.size()-1)));
+		          data.add(new Product(brand.get(brand.size()-1),model.get(brand.size()-1),price.get(brand.size()-1)));
 		    }
 		    index=i+1;
 		    
@@ -73,8 +73,8 @@ public class Solution {
 		return data;
 	}
 	
-	public static void Print(ArrayList<Details> List) {
-		for(Details i : List) {
+	public static void Print(ArrayList<Product> List) {
+		for(Product i : List) {
 			System.out.println(i.Brand+","+i.Model+","+i.Price);
 		}
 	}
@@ -83,7 +83,7 @@ public class Solution {
 
 		String content = new String(Files.readAllBytes(Paths.get("C:\\Users\\Arun\\Downloads\\TestCase.txt")));
 		
-		ArrayList<Details> List =organize(content);
+		ArrayList<Product> List =organize(content);
 		Print(List);
 	}
 
